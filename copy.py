@@ -1,14 +1,8 @@
 import argparse
-import os
+from utils import file_or_string
 
 ENDFILE: int = -1
 NEWLINE: int = 10 # ASCII value
-
-def file_or_string(arg: str):
-    if os.path.isfile(arg):
-        with open(arg, 'r', encoding='utf-8') as f:
-            return f.read()
-    return arg
 
 def getc(ch: str):
     try:
