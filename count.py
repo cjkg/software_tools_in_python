@@ -1,5 +1,5 @@
 import argparse
-from copy import getc, putc
+from copy import getc, putc, copy
 from utils import file_or_string
 
 BLANK = 32
@@ -39,7 +39,7 @@ def count_words(s: str):
             in_a_word = True
             wc += 1 
 
-    return
+    return wc
 
 def count(to_count: str, chars: bool, lines: bool, words: bool):
     cc = count_characters(to_count) if chars else -1
@@ -52,16 +52,18 @@ def count(to_count: str, chars: bool, lines: bool, words: bool):
 
 def display_count(cc: int, lc: int, wc: int):
     if cc + lc + wc == -3:
-        print("No count options included!")
+        copy("No count options included!")
 
     if cc > -1:
-        print("Character Count: " + str(cc))
+        copy("Character Count: " + str(cc))
+        copy("\n")
 
     if lc > -1:
-        print("Line Count: " + str(lc))
+        copy("Line Count: " + str(lc))
+        copy("\n")
 
     if wc > -1:
-        print("Word Count: " + str(wc))
+        copy("Word Count: " + str(wc))
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -80,4 +82,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     count(args.input_data, args.characters, args.lines, args.words)
+    print() # flushes weird percentage sign from the shell
 
